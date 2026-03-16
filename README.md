@@ -50,33 +50,6 @@ Projek ini merupakan implementasi machine learning menggunakan algoritma Support
                          └──────────────────────────────────────────┘
 ```
 
-## 📁 Struktur Folder
-
-```
-web-svm-stroke/
-├── app/
-│   ├── Http/Controllers/
-│   │   └── PrediksiController.php    # Controller utama
-│   └── Models/
-│       └── Pasien.php                # Model pasien
-├── database/
-│   └── migrations/
-│       └── 2024_01_01_000001_create_pasien_table.php
-├── python/
-│   ├── prediksi.py                  # Script prediksi SVM
-│   └── model/
-│       ├── svm_model.pkl            # Model SVM terlatih
-│       └── scaler.pkl               # Scaler untuk normalisasi
-├── resources/
-│   └── views/
-│       └── prediksi/
-│           └── index.blade.php       # Halaman utama
-├── public/
-│   └── sample_data.csv              # Sample data untuk testing
-└── routes/
-    └── web.php                      # Definisi route
-```
-
 ## 📋 Format Data Pasien
 
 File CSV/Excel harus memiliki kolom berikut:
@@ -155,16 +128,6 @@ Path Python sudah dikonfigurasi untuk menggunakan virtual environment:
 venv\Scripts\python.exe
 ```
 
-## 📝 Lisensi
-
-MIT License - lihat file [LICENSE](LICENSE) untuk detail.
-
 ## 👤 Author
 
 - **Ardhika** - [GitHub](https://github.com/ardhikaxx)
-
-## 🙏 Acknowledgments
-
-- Dataset stroke dari Kaggle
-- Laravel Framework
-- Scikit-learn Documentation
