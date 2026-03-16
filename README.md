@@ -1,59 +1,170 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Website Prediksi Risiko Stroke dengan Algoritma SVM
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
+![Laravel](https://img.shields.io/badge/Laravel-12.x-red.svg)
+![Python](https://img.shields.io/badge/Python-3.11-yellow.svg)
 
-# Website Penerapan Algoritma Support Vector Machine (SVM) untuk Prediksi Risiko Stroke Berdasarkan Data Kesehatan Pasien
+Website sistem prediksi risiko stroke menggunakan algoritma Support Vector Machine (SVM) berbasis data kesehatan pasien.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 📋 Deskripsi Projek
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Projek ini merupakan implementasi machine learning menggunakan algoritma Support Vector Machine (SVM) untuk memprediksi risiko stroke berdasarkan data kesehatan pasien. Sistem ini dibangun dengan framework Laravel (PHP) untuk backend dan Python untuk model machine learning.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## 🚀 Fitur Utama
 
-## Learning Laravel
+- **Upload Data Pasien**: Drag & drop atau klik untuk upload file CSV/Excel
+- **Import ke Database**: Menyimpan data pasien ke database
+- **Prediksi SVM**: Melakukan prediksi risiko stroke menggunakan model SVM
+- **Visualisasi Hasil**: Chart doughnut untuk menampilkan hasil prediksi
+- **Data Terbaru**: Tabel data pasien dengan status prediksi
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+## 🛠️ Teknologi yang Digunakan
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Backend
+- **Laravel 12** - Framework PHP
+- **MySQL** - Database
+- **PhpSpreadsheet** - Untuk membaca file Excel/CSV
 
-## Laravel Sponsors
+### Machine Learning
+- **Python 3.11** - Bahasa pemrograman untuk ML
+- **NumPy** - Library komputasi numerik
+- **Scikit-learn** - Library machine learning
+- **Pandas** - Library manipulasi data
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### Frontend
+- **Bootstrap 5** - Framework CSS
+- **Chart.js** - Library visualisasi data
+- **Font Awesome** - Icon library
 
-### Premium Partners
+## 📊 Alur Sistem
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+```
+┌─────────────────┐     ┌──────────────────┐     ┌─────────────────┐
+│  Upload File    │ ──► │  Import ke       │ ──► │  Prediksi       │
+│  CSV/Excel     │     │  Database        │     │  Sekarang       │
+└─────────────────┘     └──────────────────┘     └─────────────────┘
+                                                            │
+                                                            ▼
+                         ┌──────────────────────────────────────────┐
+                         │  Hasil Prediksi (Chart Doughnut + Tabel)│
+                         └──────────────────────────────────────────┘
+```
 
-## Contributing
+## 📁 Struktur Folder
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+```
+web-svm-stroke/
+├── app/
+│   ├── Http/Controllers/
+│   │   └── PrediksiController.php    # Controller utama
+│   └── Models/
+│       └── Pasien.php                # Model pasien
+├── database/
+│   └── migrations/
+│       └── 2024_01_01_000001_create_pasien_table.php
+├── python/
+│   ├── prediksi.py                  # Script prediksi SVM
+│   └── model/
+│       ├── svm_model.pkl            # Model SVM terlatih
+│       └── scaler.pkl               # Scaler untuk normalisasi
+├── resources/
+│   └── views/
+│       └── prediksi/
+│           └── index.blade.php       # Halaman utama
+├── public/
+│   └── sample_data.csv              # Sample data untuk testing
+└── routes/
+    └── web.php                      # Definisi route
+```
 
-## Code of Conduct
+## 📋 Format Data Pasien
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+File CSV/Excel harus memiliki kolom berikut:
 
-## Security Vulnerabilities
+| Kolom | Tipe | Keterangan |
+|-------|------|------------|
+| id | Integer | ID unik pasien |
+| gender | String | Male/Female/Other |
+| age | Float | Umur pasien |
+| hypertension | Integer | 0 atau 1 |
+| heart_disease | Integer | 0 atau 1 |
+| ever_married | String | Yes/No |
+| work_type | String | Private/Self-employed/Govt_job/children/Never_worked |
+| Residence_type | String | Urban/Rural |
+| avg_glucose_level | Float | Level glukosa rata-rata |
+| bmi | Float | Body Mass Index |
+| smoking_status | String | smokes/formerly smoked/never smoked/Unknown |
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## 🖥️ Cara Install
 
-## License
+### 1. Clone Repository
+```bash
+git clone https://github.com/ardhikaxx/web-svm-stroke.git
+cd web-svm-stroke
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### 2. Install Dependencies PHP
+```bash
+composer install
+```
+
+### 3. Install Dependencies Python
+```bash
+python -m venv venv
+venv\Scripts\pip install numpy scikit-learn pandas
+```
+
+### 4. Setup Database
+```bash
+# Buat database MySQL dengan nama 'web_svm_stroke'
+# Konfigurasi .env sesuai database Anda
+
+php artisan migrate
+```
+
+### 5. Jalankan Server
+```bash
+php artisan serve
+```
+
+Buka browser dan akses `http://127.0.0.1:8000`
+
+## 📖 Cara Penggunaan
+
+1. **Buka Website**: Akses `http://127.0.0.1:8000`
+2. **Upload Data**: Klik area upload atau drag & drop file CSV/Excel
+3. **Import ke Database**: Klik tombol "Import ke Database"
+4. **Prediksi**: Klik tombol "Prediksi Sekarang"
+5. **Lihat Hasil**: Hasil prediksi akan muncul di chart dan tabel
+
+## 🔧 Konfigurasi
+
+### Konfigurasi Database (.env)
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=web_svm_stroke
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+### Konfigurasi Python
+Path Python sudah dikonfigurasi untuk menggunakan virtual environment:
+```
+venv\Scripts\python.exe
+```
+
+## 📝 Lisensi
+
+MIT License - lihat file [LICENSE](LICENSE) untuk detail.
+
+## 👤 Author
+
+- **Ardhika** - [GitHub](https://github.com/ardhikaxx)
+
+## 🙏 Acknowledgments
+
+- Dataset stroke dari Kaggle
+- Laravel Framework
+- Scikit-learn Documentation
