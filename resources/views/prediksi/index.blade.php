@@ -127,7 +127,7 @@
             background: var(--white);
             overflow: hidden;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            height: 100%;
+            height: auto;
         }
         
         .card:hover {
@@ -256,7 +256,7 @@
         .upload-area {
             border: 3px dashed var(--primary);
             border-radius: 24px;
-            padding: 60px 40px;
+            padding: 40px 30px;
             text-align: center;
             background: linear-gradient(135deg, var(--primary-bg), #e0f7fa);
             cursor: pointer;
@@ -278,9 +278,9 @@
         }
         
         .upload-icon {
-            font-size: 80px;
+            font-size: 60px;
             color: var(--primary);
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             animation: float 3s ease-in-out infinite;
         }
         
@@ -426,7 +426,9 @@
         
         .chart-container {
             position: relative;
-            height: 340px;
+            min-height: 250px;
+            height: auto;
+            padding: 20px 0;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -463,7 +465,7 @@
         }
         
         .table-container {
-            max-height: 420px;
+            max-height: 300px;
             overflow-y: auto;
             border-radius: 18px;
             box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
@@ -656,7 +658,7 @@
                 </div>
             </div>
 
-            <div class="row g-4">
+            <div class="row g-4 align-items-start">
                 <div class="col-lg-6">
                     <div class="card mb-4">
                         <div class="card-header-custom">
