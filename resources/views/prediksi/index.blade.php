@@ -100,7 +100,6 @@
             align-items: center;
             gap: 15px;
             letter-spacing: -0.5px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
         }
         
         .navbar-brand i {
@@ -124,20 +123,18 @@
             font-size: 4rem;
             font-weight: 800;
             margin-bottom: 15px;
-            background: linear-gradient(to bottom, #ffffff, var(--accent));
+            background: linear-gradient(to bottom, #ffffff, #cbd5e1);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             letter-spacing: -1.5px;
-            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.6));
         }
         
         .page-subtitle {
-            color: var(--text-muted);
+            color: rgba(255,255,255,0.9);
             font-size: 1.3rem;
-            font-weight: 600;
+            font-weight: 500;
             max-width: 700px;
             margin: 0 auto;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
         }
         
         .glass-card {
@@ -169,7 +166,6 @@
             border-bottom: 1px solid var(--glass-border);
             background: rgba(0, 0, 0, 0.3);
             color: var(--white);
-            text-shadow: 0 1px 2px rgba(0,0,0,0.5);
         }
         
         .card-header-custom i {
@@ -260,18 +256,15 @@
             line-height: 1;
             margin-bottom: 10px;
             letter-spacing: -2px;
-            text-shadow: 0 5px 15px rgba(0,0,0,0.4);
             position: relative;
             z-index: 2;
         }
         
         .stat-label {
-            color: #ffffff;
-            font-size: 0.95rem;
-            font-weight: 800;
+            color: var(--white);
+            font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 2.5px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
             position: relative;
             z-index: 2;
             opacity: 0.8;
@@ -327,7 +320,6 @@
             font-weight: 700;
             color: var(--white);
             margin-bottom: 12px;
-            text-shadow: 0 1px 3px rgba(0,0,0,0.5);
         }
         
         .upload-subtitle {
@@ -349,7 +341,6 @@
             gap: 12px;
             border: none;
             color: var(--white);
-            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
             box-shadow: 0 4px 12px rgba(0,0,0,0.2);
             position: relative;
             overflow: hidden;
@@ -449,7 +440,6 @@
             text-transform: uppercase;
             font-size: 0.85rem;
             letter-spacing: 1px;
-            text-shadow: 0 1px 2px rgba(0,0,0,0.5);
         }
         
         .table tbody td {
@@ -472,7 +462,6 @@
             font-weight: 800;
             font-size: 0.8rem;
             box-shadow: 0 4px 10px rgba(239, 68, 68, 0.4);
-            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
         }
         
         .badge-no-stroke {
@@ -483,7 +472,6 @@
             font-weight: 800;
             font-size: 0.8rem;
             box-shadow: 0 4px 10px rgba(16, 185, 129, 0.4);
-            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
         }
         
         .chart-container {
@@ -544,7 +532,7 @@
         <div class="container">
             <div class="page-header">
                 <h1 class="page-title">AI Prediksi Risiko Stroke</h1>
-                <p class="page-subtitle">Sistem Analisis Lanjut menggunakan Algoritma Support Vector Machine (SVM)</p>
+                <p class="page-subtitle">Sistem Prediksi Canggih dengan Algoritma Machine Learning SVM untuk Deteksi Dini Risiko Stroke</p>
             </div>
             
             <div class="row mb-5 g-4">
