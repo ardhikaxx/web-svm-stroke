@@ -427,19 +427,20 @@
         }
         
         .table {
-            color: var(--white);
+            color: #ffffff !important;
             margin: 0;
         }
         
         .table thead th {
             background: rgba(0, 0, 0, 0.4);
-            color: var(--accent);
+            color: var(--accent) !important;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             padding: 22px;
             font-weight: 800;
             text-transform: uppercase;
             font-size: 0.85rem;
             letter-spacing: 1px;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.5);
         }
         
         .table tbody td {
@@ -448,6 +449,7 @@
             vertical-align: middle;
             background: transparent;
             font-weight: 600;
+            color: #ffffff !important;
         }
 
         .table tbody tr:hover {
