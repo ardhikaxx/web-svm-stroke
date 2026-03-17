@@ -9,21 +9,18 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #0891b2;
-            --primary-dark: #0e7490;
-            --primary-darker: #155e75;
-            --primary-light: #22d3ee;
-            --primary-bg: #ecfeff;
-            --primary-bg-dark: #cffafe;
-            --dark: #0c4a6e;
-            --dark-light: #164e63;
-            --gray: #6b7280;
-            --gray-light: #9ca3af;
+            --primary: #0d9488;
+            --primary-light: #2dd4bf;
+            --primary-dark: #0f766e;
+            --accent: #5eead4;
+            --bg-gradient: linear-gradient(135deg, #021a1a 0%, #064e4b 50%, #022c2a 100%);
+            --glass-bg: rgba(0, 0, 0, 0.25); 
+            --glass-border: rgba(255, 255, 255, 0.15);
+            --glass-blur: blur(16px);
+            --card-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.5);
+            --text-main: #ffffff;
+            --text-muted: #ccfbf1;
             --white: #ffffff;
-            --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
-            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
-            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
-            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
         }
         
         * {
@@ -34,589 +31,511 @@
         
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
-            background: linear-gradient(135deg, #0891b2 0%, #0e7490 30%, #164e63 60%, #0c4a6e 100%);
+            background: var(--bg-gradient);
+            background-attachment: fixed;
             min-height: 100vh;
-            padding-bottom: 60px;
-            position: relative;
+            color: var(--text-main);
             overflow-x: hidden;
+            position: relative;
         }
-        
-        body::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                radial-gradient(circle at 20% 80%, rgba(8, 145, 178, 0.3) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(34, 211, 238, 0.2) 0%, transparent 50%),
-                radial-gradient(circle at 40% 40%, rgba(8, 145, 178, 0.1) 0%, transparent 30%);
+
+        /* Decorative Background Elements */
+        .deco-blob {
+            position: fixed;
+            z-index: -1;
+            filter: blur(100px);
+            border-radius: 50%;
+            opacity: 0.25;
             pointer-events: none;
+            animation: float-deco 25s infinite alternate;
+        }
+
+        .blob-1 {
+            width: 600px;
+            height: 600px;
+            background: var(--primary-dark);
+            top: -150px;
+            right: -100px;
+        }
+
+        .blob-2 {
+            width: 500px;
+            height: 500px;
+            background: #042f2e;
+            bottom: -100px;
+            left: -100px;
+            animation-delay: -7s;
+        }
+
+        .blob-3 {
+            width: 350px;
+            height: 350px;
+            background: var(--primary);
+            top: 45%;
+            left: 15%;
+            animation-delay: -12s;
+        }
+
+        @keyframes float-deco {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(60px, 120px) scale(1.1); }
         }
         
         .navbar {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            box-shadow: var(--shadow-md);
-            padding: 18px 0;
-            position: relative;
-            z-index: 100;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border-bottom: 1px solid var(--glass-border);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
         
         .navbar-brand {
             font-weight: 800;
-            font-size: 1.6rem;
-            color: var(--primary) !important;
+            font-size: 1.7rem;
+            color: var(--white) !important;
             display: flex;
             align-items: center;
-            gap: 12px;
-            text-decoration: none;
-        }
-        
-        .navbar-brand:hover {
-            color: var(--primary-dark) !important;
+            gap: 15px;
+            letter-spacing: -0.5px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
         }
         
         .navbar-brand i {
-            font-size: 2rem;
-            background: linear-gradient(135deg, var(--primary), var(--primary-light));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            font-size: 2.2rem;
+            color: var(--accent);
+            filter: drop-shadow(0 0 8px rgba(94, 234, 212, 0.4));
         }
         
         .main-container {
-            padding-top: 50px;
+            padding: 60px 0;
             position: relative;
             z-index: 1;
         }
         
         .page-header {
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 60px;
         }
         
         .page-title {
-            color: white;
-            font-size: 2.8rem;
+            font-size: 4rem;
             font-weight: 800;
-            margin-bottom: 10px;
-            text-shadow: 0 4px 6px rgba(0,0,0,0.2);
-            letter-spacing: -0.5px;
+            margin-bottom: 15px;
+            background: linear-gradient(to bottom, #ffffff, var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -1.5px;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.6));
         }
         
         .page-subtitle {
-            color: rgba(255,255,255,0.85);
-            font-size: 1.2rem;
-            font-weight: 400;
+            color: var(--text-muted);
+            font-size: 1.3rem;
+            font-weight: 600;
+            max-width: 700px;
+            margin: 0 auto;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
         }
         
-        .page-subtitle span {
-            display: inline-block;
-            background: rgba(255,255,255,0.15);
-            padding: 5px 15px;
-            border-radius: 20px;
-            margin-top: 8px;
-        }
-        
-        .card {
-            border: none;
-            border-radius: 24px;
-            box-shadow: var(--shadow-xl);
-            background: var(--white);
+        .glass-card {
+            background: rgba(0, 0, 0, 0.2);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--glass-border);
+            border-radius: 30px;
+            box-shadow: var(--card-shadow);
             overflow: hidden;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             height: auto;
         }
         
-        .card:hover {
+        .glass-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            background: rgba(0, 0, 0, 0.3);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
         }
         
         .card-header-custom {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: white;
-            padding: 22px 28px;
+            padding: 28px 32px;
             font-weight: 700;
-            font-size: 1.15rem;
-            border: none;
+            font-size: 1.3rem;
             display: flex;
             align-items: center;
-            gap: 12px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .card-header-custom::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
-            transition: left 0.5s;
-        }
-        
-        .card:hover .card-header-custom::before {
-            left: 100%;
+            gap: 15px;
+            border-bottom: 1px solid var(--glass-border);
+            background: rgba(0, 0, 0, 0.3);
+            color: var(--white);
+            text-shadow: 0 1px 2px rgba(0,0,0,0.5);
         }
         
         .card-header-custom i {
-            font-size: 1.4rem;
+            color: var(--accent);
         }
         
         .card-body {
-            padding: 28px;
+            padding: 30px;
         }
         
         .stat-card {
-            background: var(--white);
-            border-radius: 24px;
-            padding: 32px 24px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.03));
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 32px;
+            padding: 45px 25px;
             text-align: center;
-            box-shadow: var(--shadow-xl);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
             position: relative;
             overflow: hidden;
-            height: 100%;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
         
+        .stat-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            background: rgba(255, 255, 255, 0.12);
+            border-color: var(--accent);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5), 0 0 20px rgba(13, 148, 136, 0.2);
+        }
+
+        .stat-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.05;
+            background-image: radial-gradient(var(--accent) 1px, transparent 1px);
+            background-size: 20px 20px;
+            pointer-events: none;
+            z-index: 1;
+        }
+
         .stat-card::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
-            right: 0;
-            height: 5px;
-            background: linear-gradient(90deg, var(--primary), var(--primary-light));
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at top right, rgba(94, 234, 212, 0.1), transparent 60%);
+            pointer-events: none;
         }
-        
-        .stat-card:hover {
-            transform: translateY(-10px) scale(1.02);
-        }
-        
+
         .stat-icon {
             width: 80px;
             height: 80px;
-            border-radius: 20px;
+            border-radius: 24px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 20px;
-            font-size: 2rem;
-            transition: all 0.3s ease;
+            margin-bottom: 25px;
+            font-size: 2.2rem;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--accent);
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            position: relative;
+            z-index: 2;
         }
         
         .stat-card:hover .stat-icon {
-            transform: scale(1.1) rotate(5deg);
-        }
-        
-        .stat-icon.primary {
-            background: linear-gradient(135deg, var(--primary-bg), var(--primary-bg-dark));
-            color: var(--primary);
-            box-shadow: 0 10px 30px rgba(8, 145, 178, 0.2);
-        }
-        
-        .stat-icon.danger {
-            background: linear-gradient(135deg, #fef2f2, #fee2e2);
-            color: #ef4444;
-            box-shadow: 0 10px 30px rgba(239, 68, 68, 0.2);
-        }
-        
-        .stat-icon.success {
-            background: linear-gradient(135deg, #f0fdf4, #dcfce7);
-            color: #22c55e;
-            box-shadow: 0 10px 30px rgba(34, 197, 94, 0.2);
+            transform: rotateY(180deg);
+            background: var(--accent);
+            color: #042f2e;
+            box-shadow: 0 0 30px rgba(94, 234, 212, 0.4);
         }
         
         .stat-number {
-            font-size: 3rem;
-            font-weight: 800;
-            color: var(--dark);
+            font-size: 4rem;
+            font-weight: 900;
+            color: var(--white);
             line-height: 1;
-            margin-bottom: 8px;
-            letter-spacing: -1px;
+            margin-bottom: 10px;
+            letter-spacing: -2px;
+            text-shadow: 0 5px 15px rgba(0,0,0,0.4);
+            position: relative;
+            z-index: 2;
         }
         
         .stat-label {
-            color: var(--gray);
+            color: #ffffff;
             font-size: 0.95rem;
-            font-weight: 600;
+            font-weight: 800;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 2.5px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+            position: relative;
+            z-index: 2;
+            opacity: 0.8;
         }
-        
-        .stat-card:nth-child(1) .stat-number { color: var(--primary); }
-        .stat-card:nth-child(2) .stat-number { color: #ef4444; }
-        .stat-card:nth-child(3) .stat-number { color: #22c55e; }
+
+        /* Specific card variants for colored glows */
+        .stat-card.risk-high {
+            border-bottom: 4px solid #ef4444;
+        }
+        .stat-card.risk-high .stat-icon {
+            color: #ef4444;
+            background: rgba(239, 68, 68, 0.1);
+        }
+        .stat-card.risk-high:hover .stat-icon {
+            background: #ef4444;
+            color: #ffffff;
+            box-shadow: 0 0 30px rgba(239, 68, 68, 0.4);
+        }
+        .stat-card.risk-high .stat-number { color: #f87171; }
+
+        .stat-card.status-healthy {
+            border-bottom: 4px solid #10b981;
+        }
+        .stat-card.status-healthy .stat-icon {
+            color: #10b981;
+            background: rgba(16, 185, 129, 0.1);
+        }
+        .stat-card.status-healthy:hover .stat-icon {
+            background: #10b981;
+            color: #ffffff;
+            box-shadow: 0 0 30px rgba(16, 185, 129, 0.4);
+        }
+        .stat-card.status-healthy .stat-number { color: #34d399; }
         
         .upload-area {
-            border: 3px dashed var(--primary);
-            border-radius: 24px;
-            padding: 40px 30px;
+            border: 2px dashed rgba(255, 255, 255, 0.2);
+            border-radius: 26px;
+            padding: 55px 35px;
             text-align: center;
-            background: linear-gradient(135deg, var(--primary-bg), #e0f7fa);
+            background: rgba(0, 0, 0, 0.15);
             cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
+            transition: all 0.4s ease;
         }
         
         .upload-area:hover {
-            background: linear-gradient(135deg, #e0f7fa, #cffafe);
-            border-color: var(--primary-dark);
+            background: rgba(0, 0, 0, 0.25);
+            border-color: var(--accent);
             transform: scale(1.01);
-        }
-        
-        .upload-area.dragover {
-            background: #b9f6f0;
-            border-color: var(--primary-darker);
-            transform: scale(1.02);
-        }
-        
-        .upload-icon {
-            font-size: 60px;
-            color: var(--primary);
-            margin-bottom: 20px;
-            animation: float 3s ease-in-out infinite;
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
         }
         
         .upload-title {
             font-size: 1.4rem;
             font-weight: 700;
-            color: var(--dark);
+            color: var(--white);
             margin-bottom: 12px;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.5);
         }
         
         .upload-subtitle {
-            color: var(--gray);
-            margin-bottom: 25px;
+            color: var(--text-muted);
             font-size: 1rem;
-        }
-        
-        .file-info {
-            background: linear-gradient(135deg, var(--primary-bg), #e0f7fa);
-            border-radius: 16px;
-            padding: 18px 24px;
-            margin-top: 18px;
-            display: none;
-            align-items: center;
-            gap: 15px;
-            animation: slideIn 0.3s ease;
-        }
-        
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .file-info.show {
-            display: flex;
-        }
-        
-        .file-info i {
-            color: var(--primary);
-            font-size: 1.8rem;
-        }
-        
-        .file-info .file-name {
-            font-weight: 700;
-            color: var(--dark);
-            font-size: 1rem;
-        }
-        
-        .file-info .file-size {
-            color: var(--gray);
-            font-size: 0.9rem;
+            margin-bottom: 35px;
+            font-weight: 500;
         }
         
         .btn {
-            padding: 14px 32px;
-            border-radius: 16px;
-            font-weight: 700;
-            font-size: 1rem;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 18px 35px;
+            border-radius: 20px;
+            font-weight: 800;
+            font-size: 1.05rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
-            letter-spacing: -0.3px;
+            gap: 12px;
+            border: none;
+            color: var(--white);
+            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            transition: width 0.3s ease;
+            z-index: -1;
+        }
+
+        .btn:hover::before {
+            width: 100%;
         }
         
         .btn-primary {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            border: none;
-            color: white;
-            box-shadow: 0 4px 15px rgba(8, 145, 178, 0.4);
+            background: var(--primary);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
         
         .btn-primary:hover {
-            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(8, 145, 178, 0.5);
-            color: white;
+            background: var(--primary-light);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(13, 148, 136, 0.5);
+            color: #042f2e;
         }
         
         .btn-success {
-            background: linear-gradient(135deg, #22c55e, #16a34a);
-            border: none;
-            color: white;
-            box-shadow: 0 4px 15px rgba(34, 197, 94, 0.4);
+            background: #059669;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
         
         .btn-success:hover {
-            background: linear-gradient(135deg, #16a34a, #22c55e);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(34, 197, 94, 0.5);
-            color: white;
+            background: #10b981;
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
         }
-        
+
         .btn-danger {
-            background: linear-gradient(135deg, #ef4444, #dc2626);
-            border: none;
-            color: white;
-            box-shadow: 0 4px 15px rgba(239, 68, 68, 0.4);
+            background: #dc2626;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
-        
+
         .btn-danger:hover {
-            background: linear-gradient(135deg, #dc2626, #ef4444);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(239, 68, 68, 0.5);
-            color: white;
-        }
-        
-        .btn:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-            transform: none !important;
-            box-shadow: none !important;
+            background: #ef4444;
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(239, 68, 68, 0.4);
         }
         
         .btn-width {
             width: 100%;
-            margin-bottom: 16px;
-        }
-        
-        .btn-width:last-child {
-            margin-bottom: 0;
+            margin-bottom: 18px;
         }
         
         .description-box {
-            background: linear-gradient(135deg, var(--primary-bg), #e0f7fa);
-            border-radius: 18px;
-            padding: 22px;
-            margin-bottom: 22px;
-            border-left: 4px solid var(--primary);
+            background: rgba(0, 0, 0, 0.25);
+            border-radius: 22px;
+            padding: 28px;
+            margin-bottom: 28px;
+            border-left: 5px solid var(--accent);
+            box-shadow: inset 0 2px 10px rgba(0,0,0,0.2);
         }
         
         .description-box p {
-            color: var(--dark-light);
+            color: #e2fef9;
             margin: 0;
-            line-height: 1.7;
-            font-size: 0.98rem;
-        }
-        
-        .chart-container {
-            position: relative;
-            min-height: 250px;
-            height: auto;
-            padding: 20px 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        #chartPlaceholder {
-            text-align: center;
-            padding: 50px 30px;
-        }
-        
-        #chartPlaceholder i {
-            font-size: 6rem;
-            color: var(--primary);
-            opacity: 0.2;
-            margin-bottom: 25px;
-            animation: pulse 2s infinite;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { opacity: 0.2; transform: scale(1); }
-            50% { opacity: 0.3; transform: scale(1.05); }
-        }
-        
-        #chartPlaceholder p {
-            color: var(--gray);
-            font-size: 1.15rem;
-            font-weight: 600;
-            margin: 0 0 8px 0;
-        }
-        
-        #chartPlaceholder .small {
-            font-size: 0.95rem;
-            opacity: 0.7;
-        }
-        
-        .table-container {
-            max-height: 300px;
-            overflow-y: auto;
-            border-radius: 18px;
-            box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
-        }
-        
-        .table {
-            margin: 0;
-            font-size: 0.95rem;
-        }
-        
-        .table thead th {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: white;
-            position: sticky;
-            top: 0;
-            z-index: 1;
-            padding: 18px;
-            font-weight: 700;
-            border: none;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        
-        .table tbody tr {
-            transition: all 0.2s ease;
-        }
-        
-        .table tbody tr:hover {
-            background: var(--primary-bg);
-        }
-        
-        .table tbody td {
-            padding: 16px 18px;
-            vertical-align: middle;
+            line-height: 1.8;
+            font-size: 1.05rem;
             font-weight: 500;
         }
         
-        .badge-stroke {
-            background: linear-gradient(135deg, #ef4444, #dc2626);
-            color: white;
-            padding: 8px 18px;
-            border-radius: 25px;
-            font-weight: 700;
-            font-size: 0.85rem;
-            box-shadow: 0 4px 10px rgba(239, 68, 68, 0.3);
+        .table-container {
+            border-radius: 24px;
+            overflow: hidden;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
         
-        .badge-no-stroke {
-            background: linear-gradient(135deg, #22c55e, #16a34a);
-            color: white;
-            padding: 8px 18px;
-            border-radius: 25px;
-            font-weight: 700;
-            font-size: 0.85rem;
-            box-shadow: 0 4px 10px rgba(34, 197, 94, 0.3);
-        }
-        
-        .alert {
-            border-radius: 16px;
-            border: none;
-            padding: 18px 24px;
-            font-weight: 600;
-        }
-        
-        .alert-success {
-            background: linear-gradient(135deg, #f0fdf4, #dcfce7);
-            color: #166534;
-            border-left: 5px solid #22c55e;
-        }
-        
-        .alert-danger {
-            background: linear-gradient(135deg, #fef2f2, #fee2e2);
-            color: #991b1b;
-            border-left: 5px solid #ef4444;
-        }
-        
-        .spinner-border-sm {
-            width: 18px;
-            height: 18px;
-            border-width: 2.5px;
-        }
-        
-        .empty-state {
-            text-align: center;
-            padding: 60px 30px;
-        }
-        
-        .empty-state i {
-            font-size: 5rem;
-            color: var(--primary);
-            opacity: 0.15;
-            margin-bottom: 20px;
-        }
-        
-        .empty-state p {
-            color: var(--gray);
-            font-size: 1.1rem;
-            font-weight: 600;
+        .table {
+            color: var(--white);
             margin: 0;
         }
         
-        .wave-decoration {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 100px;
-            pointer-events: none;
-            z-index: 0;
+        .table thead th {
+            background: rgba(0, 0, 0, 0.4);
+            color: var(--accent);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 22px;
+            font-weight: 800;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.5);
         }
         
-        @media (max-width: 992px) {
-            .page-title {
-                font-size: 2rem;
-            }
-            
-            .stat-number {
-                font-size: 2.2rem;
-            }
+        .table tbody td {
+            padding: 20px 22px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            vertical-align: middle;
+            background: transparent;
+            font-weight: 600;
+        }
+
+        .table tbody tr:hover {
+            background: rgba(255, 255, 255, 0.03);
         }
         
+        .badge-stroke {
+            background: #ef4444;
+            color: #ffffff;
+            padding: 9px 18px;
+            border-radius: 14px;
+            font-weight: 800;
+            font-size: 0.8rem;
+            box-shadow: 0 4px 10px rgba(239, 68, 68, 0.4);
+            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+        }
+        
+        .badge-no-stroke {
+            background: #10b981;
+            color: #ffffff;
+            padding: 9px 18px;
+            border-radius: 14px;
+            font-weight: 800;
+            font-size: 0.8rem;
+            box-shadow: 0 4px 10px rgba(16, 185, 129, 0.4);
+            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+        }
+        
+        .chart-container {
+            padding: 20px;
+            min-height: 320px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .alert {
+            background: var(--glass-bg);
+            backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--glass-border);
+            color: var(--white);
+            border-radius: 18px;
+            padding: 20px;
+        }
+
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent);
+        }
+
         @media (max-width: 768px) {
-            .page-title {
-                font-size: 1.7rem;
-            }
-            
-            .page-subtitle {
-                font-size: 1rem;
-            }
-            
-            .card-body {
-                padding: 20px;
-            }
-            
-            .upload-area {
-                padding: 40px 25px;
-            }
-            
-            .stat-card {
-                padding: 24px 18px;
-            }
+            .page-title { font-size: 2.2rem; }
+            .stat-number { font-size: 2.5rem; }
+            .glass-card { margin-bottom: 20px; }
         }
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light">
+    <!-- Decorative Elements -->
+    <div class="deco-blob blob-1"></div>
+    <div class="deco-blob blob-2"></div>
+    <div class="deco-blob blob-3"></div>
+
+    <nav class="navbar">
         <div class="container">
             <a class="navbar-brand" href="/">
-                <i class="fas fa-heart-pulse"></i>
-                SVM Stroke
+                <i class="fas fa-microscope"></i>
+                <span>STROKE<span style="color: var(--accent);">SVM</span></span>
             </a>
         </div>
     </nav>
@@ -624,63 +543,65 @@
     <div class="main-container">
         <div class="container">
             <div class="page-header">
-                <h1 class="page-title">Prediksi Risiko Stroke</h1>
-                <p class="page-subtitle">Menggunakan Algoritma Support Vector Machine (SVM)</p>
+                <h1 class="page-title">AI Prediksi Risiko Stroke</h1>
+                <p class="page-subtitle">Sistem Analisis Lanjut menggunakan Algoritma Support Vector Machine (SVM)</p>
             </div>
             
             <div class="row mb-5 g-4">
                 <div class="col-md-4">
                     <div class="stat-card">
-                        <div class="stat-icon primary">
-                            <i class="fas fa-users"></i>
+                        <div class="stat-pattern"></div>
+                        <div class="stat-icon">
+                            <i class="fas fa-users-viewfinder"></i>
                         </div>
                         <div class="stat-number" id="totalPasien">0</div>
                         <div class="stat-label">Total Pasien</div>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="stat-card">
-                        <div class="stat-icon danger">
-                            <i class="fas fa-heart-crack"></i>
+                    <div class="stat-card risk-high">
+                        <div class="stat-pattern"></div>
+                        <div class="stat-icon">
+                            <i class="fas fa-heart-pulse"></i>
                         </div>
                         <div class="stat-number" id="pasienStroke">0</div>
-                        <div class="stat-label">Risiko Stroke</div>
+                        <div class="stat-label">Berisiko Stroke</div>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="stat-card">
-                        <div class="stat-icon success">
+                    <div class="stat-card status-healthy">
+                        <div class="stat-pattern"></div>
+                        <div class="stat-icon">
                             <i class="fas fa-user-shield"></i>
                         </div>
                         <div class="stat-number" id="pasienTidakStroke">0</div>
-                        <div class="stat-label">Tidak Stroke</div>
+                        <div class="stat-label">Tidak Berisiko</div>
                     </div>
                 </div>
             </div>
 
-            <div class="row g-4 align-items-start">
+            <div class="row g-4 align-items-stretch">
                 <div class="col-lg-6">
-                    <div class="card mb-4">
+                    <div class="glass-card mb-4">
                         <div class="card-header-custom">
-                            <i class="fas fa-file-import"></i> Import Data Pasien
+                            <i class="fas fa-cloud-arrow-up"></i> Import Data Pasien
                         </div>
                         <div class="card-body">
                             <form id="uploadForm" enctype="multipart/form-data">
                                 @csrf
                                 <div class="upload-area" id="uploadArea">
-                                    <i class="fas fa-cloud-upload-alt upload-icon"></i>
-                                    <div class="upload-title">Drag & Drop file di sini</div>
-                                    <div class="upload-subtitle">atau klik untuk memilih file</div>
+                                    <i class="fas fa-dna upload-icon mb-3" style="font-size: 4rem; color: var(--accent); opacity: 0.3;"></i>
+                                    <div class="upload-title">Letakkan File Data Pasien</div>
+                                    <div class="upload-subtitle" style="color: #ccfbf1;">Format CSV atau Excel (Maks 10MB)</div>
                                     <input type="file" id="fileInput" name="file" accept=".csv,.xlsx,.xls" style="display: none;">
                                     <button type="button" class="btn btn-primary" onclick="document.getElementById('fileInput').click()">
-                                        <i class="fas fa-folder-open"></i> Pilih File
+                                        <i class="fas fa-folder-tree"></i> Pilih Dataset
                                     </button>
                                 </div>
                                 <div class="file-info" id="fileInfo">
-                                    <i class="fas fa-file-csv"></i>
                                     <div>
-                                        <div class="file-name" id="fileName"></div>
-                                        <div class="file-size" id="fileSize"></div>
+                                        <div class="file-name" id="fileName" style="font-weight: 700; color: var(--white);"></div>
+                                        <div class="file-size" id="fileSize" style="color: #ccfbf1; font-size: 0.9rem;"></div>
                                     </div>
                                 </div>
                             </form>
@@ -689,59 +610,61 @@
                             
                             <div class="mt-4">
                                 <button type="button" class="btn btn-success btn-width" id="importBtn" disabled>
-                                    <i class="fas fa-database"></i> Import ke Database
+                                    <i class="fas fa-server"></i> Proses & Simpan Data
                                 </button>
                             </div>
                         </div>
                     </div>
 
-                    <div class="card">
+                    <div class="glass-card">
                         <div class="card-header-custom">
-                            <i class="fas fa-microchip"></i> Prediksi SVM
+                            <i class="fas fa-brain"></i> Mesin Prediksi AI
                         </div>
                         <div class="card-body">
                             <div class="description-box">
-                                <p>Klik tombol di bawah untuk melakukan prediksi risiko stroke pada data pasien menggunakan algoritma Machine Learning SVM.</p>
+                                <p>Inisialisasi kernel SVM untuk menganalisis parameter fisiologis dan menghasilkan profil risiko kesehatan pasien.</p>
                             </div>
-                            <button type="button" class="btn btn-primary btn-width" id="prediksiBtn">
-                                <i class="fas fa-bolt"></i> Prediksi Sekarang
-                            </button>
-                            <button type="button" class="btn btn-danger btn-width" id="hapusBtn">
-                                <i class="fas fa-trash-alt"></i> Hapus Semua Data
-                            </button>
+                            <div class="d-flex flex-column gap-3">
+                                <button type="button" class="btn btn-primary btn-width" id="prediksiBtn">
+                                    <i class="fas fa-wand-magic-sparkles"></i> Jalankan Model Prediksi
+                                </button>
+                                <button type="button" class="btn btn-danger btn-width" id="hapusBtn">
+                                    <i class="fas fa-eraser"></i> Hapus Semua Data
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="col-lg-6">
-                    <div class="card mb-4">
+                    <div class="glass-card mb-4">
                         <div class="card-header-custom">
-                            <i class="fas fa-chart-pie"></i> Hasil Prediksi
+                            <i class="fas fa-chart-simple"></i> Wawasan Analitik
                         </div>
-                        <div class="card-body">
+                        <div class="card-body p-0">
                             <div class="chart-container" id="chartContainer">
-                                <div id="chartPlaceholder">
-                                    <i class="fas fa-chart-line"></i>
-                                    <p>Belum ada hasil prediksi</p>
-                                    <p class="small">Import data dan klik "Prediksi Sekarang"</p>
+                                <div id="chartPlaceholder" class="text-center">
+                                    <i class="fas fa-atom fa-spin-pulse" style="font-size: 4rem; color: var(--accent); opacity: 0.3; margin-bottom: 20px;"></i>
+                                    <p style="color: #ffffff; font-weight: 700;">Menunggu analisis data...</p>
+                                    <p class="small" style="color: #ccfbf1;">Upload data dan jalankan prediksi untuk melihat hasil</p>
                                 </div>
                                 <canvas id="doughnutChart" style="display: none;"></canvas>
                             </div>
                         </div>
                     </div>
 
-                    <div class="card">
+                    <div class="glass-card">
                         <div class="card-header-custom">
-                            <i class="fas fa-list"></i> Data Terbaru
+                            <i class="fas fa-table-list"></i> Registri Pasien
                         </div>
                         <div class="card-body p-0">
-                            <div class="table-container">
-                                <table class="table table-striped" id="dataTable">
+                            <div class="table-container" style="max-height: 400px; overflow-y: auto;">
+                                <table class="table" id="dataTable">
                                     <thead>
                                         <tr>
-                                            <th>No</th>
+                                            <th>Ref</th>
                                             <th>Umur</th>
-                                            <th>Gender</th>
+                                            <th>Gen</th>
                                             <th>Glukosa</th>
                                             <th>BMI</th>
                                             <th>Status</th>
@@ -751,9 +674,9 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <div class="empty-state" id="emptyState">
-                                <i class="fas fa-inbox"></i>
-                                <p>Belum ada data pasien</p>
+                            <div class="empty-state p-5 text-center" id="emptyState">
+                                <i class="fas fa-box-open" style="font-size: 3.5rem; color: var(--glass-border); margin-bottom: 15px;"></i>
+                                <p style="color: #ffffff; font-weight: 700;">Registri data masih kosong</p>
                             </div>
                         </div>
                     </div>
@@ -796,55 +719,64 @@
             doughnutChart = new Chart(ctx, {
                 type: 'doughnut',
                 data: {
-                    labels: ['Tidak Stroke', 'Stroke'],
+                    labels: ['Tidak Berisiko', 'Berisiko'],
                     datasets: [{
                         data: [1, 0],
                         backgroundColor: [
-                            '#22c55e',
+                            'rgba(16, 185, 129, 0.5)',
+                            'rgba(239, 68, 68, 0.5)'
+                        ],
+                        borderColor: [
+                            '#10b981',
                             '#ef4444'
                         ],
-                        borderWidth: 0,
-                        hoverOffset: 15
+                        borderWidth: 2,
+                        hoverOffset: 20,
+                        borderRadius: 10
                     }]
                 },
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
-                    cutout: '60%',
+                    cutout: '70%',
                     plugins: {
                         legend: {
                             position: 'bottom',
                             labels: {
-                                padding: 25,
+                                padding: 30,
                                 usePointStyle: true,
+                                color: '#ffffff',
                                 font: {
-                                    size: 14,
-                                    weight: '600',
+                                    size: 13,
+                                    weight: '700',
                                     family: "'Plus Jakarta Sans', sans-serif"
                                 }
                             }
                         },
                         tooltip: {
-                            backgroundColor: 'rgba(12, 74, 110, 0.95)',
+                            backgroundColor: 'rgba(0, 0, 0, 0.8)',
                             titleFont: {
-                                size: 15,
+                                size: 14,
                                 weight: '700',
                                 family: "'Plus Jakarta Sans', sans-serif"
                             },
                             bodyFont: {
-                                size: 14,
+                                size: 13,
                                 weight: '600',
                                 family: "'Plus Jakarta Sans', sans-serif"
                             },
-                            padding: 16,
-                            cornerRadius: 12,
+                            padding: 15,
+                            cornerRadius: 15,
                             displayColors: true,
-                            boxPadding: 8
+                            borderColor: 'rgba(255,255,255,0.1)',
+                            borderWidth: 1
                         }
                     },
                     animation: {
                         animateRotate: true,
-                        animateScale: true
+                        animateScale: true,
+                        duration: 2000,
+                        easing: 'easeOutQuart'
                     }
                 }
             });
@@ -924,7 +856,7 @@
             const btn = document.getElementById('importBtn');
             const originalText = btn.innerHTML;
             btn.disabled = true;
-            btn.innerHTML = '<span class="spinner-border spinner-border-sm"></span> Mengimport...';
+            btn.innerHTML = '<span class="spinner-border spinner-border-sm"></span> Memproses...';
 
             const formData = new FormData();
             formData.append('file', uploadedFile);
@@ -952,7 +884,7 @@
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
-                    showAlert('success', '✅ ' + data.message);
+                    showAlert('success', '✅ Berhasil: ' + data.message);
                     updateStats();
                     setTimeout(() => location.reload(), 1500);
                 } else {
@@ -960,7 +892,7 @@
                 }
             })
             .catch(error => {
-                showAlert('error', '❌ Error: ' + error.message);
+                showAlert('error', '❌ Kesalahan: ' + error.message);
             })
             .finally(() => {
                 btn.disabled = false;
@@ -972,7 +904,7 @@
             const btn = document.getElementById('prediksiBtn');
             const originalText = btn.innerHTML;
             btn.disabled = true;
-            btn.innerHTML = '<span class="spinner-border spinner-border-sm"></span> Memprediksi...';
+            btn.innerHTML = '<span class="spinner-border spinner-border-sm"></span> Menganalisis...';
 
             fetch('/prediksi', {
                 method: 'POST',
@@ -985,9 +917,9 @@
             .then(data => {
                 if (data.success) {
                     showAlert('success', 
-                        '🎉 Prediksi Selesai!<br>' +
-                        '<strong>Risiko Stroke:</strong> ' + data.stroke + '<br>' +
-                        '<strong>Tidak Stroke:</strong> ' + data.tidak_stroke
+                        '🎉 Analisis AI Selesai!<br>' +
+                        '<strong>Berisiko Stroke:</strong> ' + data.stroke + '<br>' +
+                        '<strong>Tidak Berisiko:</strong> ' + data.tidak_stroke
                     );
                     updateStats();
                     updateChart(data.stroke, data.tidak_stroke);
@@ -997,7 +929,7 @@
                 }
             })
             .catch(error => {
-                showAlert('error', '❌ Error: ' + error.message);
+                showAlert('error', '❌ Kesalahan: ' + error.message);
             })
             .finally(() => {
                 btn.disabled = false;
@@ -1006,7 +938,7 @@
         }
 
         function hapusData() {
-            if (!confirm('Apakah Anda yakin ingin menghapus semua data pasien?')) {
+            if (!confirm('Apakah Anda yakin ingin menghapus seluruh data registri?')) {
                 return;
             }
 
@@ -1034,7 +966,7 @@
                 }
             })
             .catch(error => {
-                showAlert('error', '❌ Error: ' + error.message);
+                showAlert('error', '❌ Kesalahan: ' + error.message);
             })
             .finally(() => {
                 btn.disabled = false;
@@ -1080,11 +1012,11 @@
                     data.forEach((pasien, index) => {
                         const row = document.createElement('tr');
                         const statusBadge = pasien.stroke === 1 
-                            ? '<span class="badge-stroke">Stroke</span>' 
-                            : '<span class="badge-no-stroke">Normal</span>';
+                            ? '<span class="badge-stroke"><i class="fas fa-warning me-1"></i> Berisiko</span>' 
+                            : '<span class="badge-no-stroke"><i class="fas fa-check-circle me-1"></i> Sehat</span>';
                         
                         row.innerHTML = `
-                            <td>${index + 1}</td>
+                            <td><span style="opacity: 0.5;">#</span>${index + 1}</td>
                             <td>${pasien.age}</td>
                             <td>${pasien.gender}</td>
                             <td>${pasien.avg_glucose_level}</td>
@@ -1098,19 +1030,25 @@
 
         function showAlert(type, message) {
             const statusDiv = document.getElementById('uploadStatus');
-            const alertClass = type === 'success' ? 'alert-success' : 'alert-danger';
-            const icon = type === 'success' ? 'check-circle' : 'exclamation-circle';
+            const icon = type === 'success' ? 'circle-check' : 'circle-exclamation';
+            const color = type === 'success' ? '#22c55e' : '#f87171';
             
             statusDiv.innerHTML = `
-                <div class="alert ${alertClass} alert-dismissible fade show" role="alert">
-                    <i class="fas fa-${icon}"></i>
-                    ${message}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                <div class="alert fade show" role="alert" style="border-left: 4px solid ${color};">
+                    <div class="d-flex align-items-center gap-3">
+                        <i class="fas fa-${icon}" style="color: ${color}; font-size: 1.2rem;"></i>
+                        <div>${message}</div>
+                        <button type="button" class="btn-close btn-close-white ms-auto" data-bs-dismiss="alert" style="font-size: 0.8rem;"></button>
+                    </div>
                 </div>
             `;
             
             setTimeout(() => {
-                statusDiv.innerHTML = '';
+                const alert = statusDiv.querySelector('.alert');
+                if (alert) {
+                    const bsAlert = new bootstrap.Alert(alert);
+                    bsAlert.close();
+                }
             }, 5000);
         }
 
