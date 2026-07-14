@@ -1,4 +1,4 @@
-# Website Prediksi Risiko Stroke dengan Algoritma SVM
+﻿# Website Prediksi Risiko Stroke dengan Algoritma SVM
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![Laravel](https://img.shields.io/badge/Laravel-12.x-red.svg)
@@ -139,7 +139,7 @@ Jika project ini bermanfaat, Anda dapat mendukung pengembangan selanjutnya melal
 
 <div align="center">
 
-![QRIS](public/assets/qris.png)
+<img src="public/assets/qris.png" alt="QRIS" width="250" />
 
 **Scan QRIS di atas untuk berdonasi**
 
